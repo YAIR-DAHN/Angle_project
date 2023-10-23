@@ -49,9 +49,12 @@ html {
 /* כותרת ראשית*/
 .main-title {
     text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 1rem 0;
+   
+    margin: 1rem ;
+}
+#text-heder-box{
+    text-align: center;
+    margin: 1rem ;
 }
 
 /*app*/
@@ -87,7 +90,7 @@ html {
 /* רקע קווי רשת */
 #Background-slots {
     position: absolute;
-    top: 8%;
+    top: 10%;
     left: 2%;
     max-width: 47%;
     font-size: large;
