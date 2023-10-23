@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="iw-il">
+
+<head>
+    <meta charset="utf-8">
+    <title>עזר לסופר - מד זווית</title>
+    <meta name="description"
+        content="Online and mobile angle measurement tool. Measure angles online in degrees from 0° to 360°.">
+    <meta name="keywords" content="angle, meter, protractor, degree, measure, online, mobile, accelerometer">
+    <meta name="author" content="Xantorohara">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="application-name" content="Protractor online">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:title" content="Online angle meter">
+    <meta property="og:site_name" content="Angle meter">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angle-meter.github.io/">
+    <meta property="og:image" content="https://angle-meter.github.io/images/screenshots/screenshot-wide.png">
+    <meta property="og:description"
+        content="This online protractor allows you to measure angles in degrees. Via an online angle meter by setting the angles manually. Or using a mobile angle meter that uses a built-in accelerometer to measure the tilt angle of the smartphone.">
+
+    <!-- <script name="schema:software-application" type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Angle meter",
+            "applicationCategory": "Utilities",
+            "description": "Measure angles online in degrees from 0° to 360°",
+            "screenshot ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
+            "image ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 4.9,
+                "reviewCount": 669
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": 0,
+                "category": "free"
+            }
+        }
+    </script> -->
+
+    <link rel="canonical" href="https://angle-meter.github.io/">
+    <link rel="icon" type="image/x-icon" href="./logo/temp_logo.png">
+    <link rel="shortcut icon" href="./logo/temp_logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/icons/icon-128.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+
+    <link rel="stylesheet" type="text/css" href="styles.css?16">
+    <link rel="stylesheet" type="text/css" href="styles-dark.css?10">
+
+    <link rel="manifest" href="manifest.json">
+    <script src="index.js?5"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603159259588268"
+        crossorigin="anonymous"></script>
+
+</head>
+<!-- אזור תפריט עליון -->
+
+<body dir="rtl">
+    <div class="header">
+        <div class="logo">
+            <img src="/logo/temp_logo.png" alt="logo" />
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button">בית</button>
+            <button class="nav-button">מחשבון</button>
+            <button class="nav-button">אודות</button>
+            <button class="nav-button">צור קשר</button>
+        </div>
+    </div>
+
+    <!-- כותרת ראשית -->
+    <div class="main-title">
+        <h1>עזר לסופר - מד זווית</h1>
+        <p>בעזרת מד הזווית תכלו למדוד את זווית הקולמוס שלכם, וכן את זווית שולחן הכתיבה באמצעות הטלפון \ המחשב שלכם.
+            <br>
+            אם אתם משתמשים בטלפון נייד, לחצו על תיבת "השתמש בחיישני הטלפון",
+            <br>
+            לאחר מכן סובבו את הטלפון למצב שוכב והניחו אותו על השולחן.
+            <br>
+            להסבר מפורט על צורת ואופן המדידה, גללו למטה למדריך המלא.
+        </p>
+    </div>
+
+
+
+    <div id="box">
+        <svg id="svg" viewBox="0 0 360 360" class="svg noselect">
+            <circle class="svg-scale-circle-middle" cx="180" cy="180" r="168" />
+            <circle class="svg-scale-circle-outer" cx="180" cy="180" r="178" />
+            <circle class="svg-scale-circle-inner" cx="180" cy="180" r="158" />
+
+            <text class="svg-scale-text" x="12" y="180">180</text>
+            <text class="svg-scale-text" x="348" y="175">0</text>
+            <text class="svg-scale-text" x="348" y="185">360</text>
+            <text class="svg-scale-text" x="180" y="12">90</text>
+            <text class="svg-scale-text" x="180" y="348">270</text>
+            <text class="svg-scale-text" x="300" y="62">45</text>
+            <text class="svg-scale-text" x="60" y="62">135</text>
+            <text class="svg-scale-text" x="60" y="298">225</text>
+            <text class="svg-scale-text" x="300" y="298">315</text>
+
+            <circle class="svg-aux-circle" cx="180" cy="180" r="150" />
+            <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" />
+            <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(45)" />
+            <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(90)" />
+            <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(135)" />
+            <line class="svg-aux-base-line" x1="180" y1="180" x2="335" y2="180" />
+
+            <circle id="arc" class="svg-arc-circle svg-animate" cx="180" cy="180" r="100" stroke-dasharray="628.32"
+                stroke-dashoffset="-628.32" opacity="0.5" />
+
+            <circle id="arcOpposite" class="svg-arc-opposite-circle svg-animate" cx="180" cy="180" r="50"
+                stroke-dasharray="314.16" stroke-dashoffset="314.16" opacity="0" />
+
+            <line id="pointerExtraLine" class="svg-pointer-extra-line svg-animate" x1="-1000" y1="180" x2="1000"
+                y2="180" />
+            <line id="pointerLine" class="svg-pointer-line svg-animate" x1="25" y1="180" x2="320" y2="180" />
+
+            <path id="pointerMarker" class="svg-pointer-arrow svg-animate" d="M320,180l4,-4l20,4l-20,4Z" />
+            <text id="arcText" class="svg-arc-text svg-animate" x="280" y="180" />
+            <text id="arcOppositeText" class="svg-arc-opposite-text svg-animate" x="230" y="180" opacity="0" />
+        </svg>
+        <div id="accelerometer-panel">
+            <input id="accelerometer-checkbox" type="checkbox" disabled>
+            <label for="accelerometer-checkbox">השתמש בחיישני הטלפון</label>
+        </div>
+        <div id="Background-slots">
+            <input id="Background-slots-checkbox" type="checkbox" >
+            <label for="Background-slots-checkbox">הצג קווי רשת ברקע</label>
+        </div>  
+        <div id="angle-input-panel">
+            <label for="angle-input">זווית °</label>
+            <input id="angle-input" type="number" step="1">
+        </div>
+    </div>
+    <div>
+        <h1>מדריך למדידת זווית</h1>
+        <div>
+            <h2>מדידת זווית שולחן באמצעות חיישני הטלפון</h2>
+            <p> ניתן למדוד זווית באופן אוטומטי באמצעות חיישני הטלפון שלכם.
+                <br>
+                שטיה זו מומלצת למדידת זווית שולחן הכתיבה שלכם.
+                <br>
+                קודם כל חשוב לוודא שהכפתור "השתמש בחיישני הטלפון" מסומן.
+                <br>
+                <b>אם יש לכם כיסוי לטלפון, מומלץ להסיר אותו לצורך מדידה מדויקת</b>
+                <br>
+                לאחר מכן סובבו את הטלפון למצב שוכב והניחו אותו על השולחן.
+                <br>
+                מומלץ לבדוק על משטח ישר שמד הזווית מראה 0 מעלות.
+                <br>
+                לאחר מכן ניתן להניח את הטלפון על השולחן בכדי לקבל את זווית השולחן.
+            </p>   
+            <h2>מדידה קולמוס ידנית \ מחשב</h2>
+            <p>בכדי למדוד באופן ידני, יש להניח את הקולמוס במרכז הסרגל בצד ימין בצורה ישרה, 
+                <br>
+                כשהחלק הנמוך של הקולמוס נמצא בנקודת האמצע, לאחר מכן יש לסמן במחשב את גובה הזוית של הקולמוס.
+                <br>
+            </p>
+            <h2>מדידת קולמוס אוטומטית באמצעות חיישני הטלפון</h2>
+            <p>
+                בכדי למדוד את זווית הקולמוס בעזרת חיישני הטלפון
+                <br>
+                יש להעמיד את הקולמוס בצורה ישרה לחלוטין, לאחר מכן להניח את הטלפון לרוחב בזווית הקולמוס.
+            </p>
+    </div>
+    <script>
+        init();
+    </script>
+
+    </div>
+
+</body>
+
+</html>
