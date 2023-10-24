@@ -66,6 +66,15 @@ const AngleInput = ({changeCallback}) => {
             changeCallback(Number(value));
         }
     };
+    // כפתורים להעלות ולהוריד את הזווית
+    document.getElementById('angle-input+').addEventListener('click', function() {
+        document.getElementById('angle-input').stepUp();
+    });
+    
+    document.getElementById('angle-input-').addEventListener('click', function() {
+        document.getElementById('angle-input').stepDown();
+    });
+    
 
     element.addEventListener('keyup', onChange);
     element.addEventListener('change', onChange);

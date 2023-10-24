@@ -23,28 +23,6 @@
     <meta property="og:description"
         content="This online protractor allows you to measure angles in degrees. Via an online angle meter by setting the angles manually. Or using a mobile angle meter that uses a built-in accelerometer to measure the tilt angle of the smartphone.">
 
-    <!-- <script name="schema:software-application" type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Angle meter",
-            "applicationCategory": "Utilities",
-            "description": "Measure angles online in degrees from 0° to 360°",
-            "screenshot ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
-            "image ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": 4.9,
-                "reviewCount": 669
-            },
-            "offers": {
-                "@type": "Offer",
-                "price": 0,
-                "category": "free"
-            }
-        }
-    </script> -->
-
     <link rel="canonical" href="https://angle-meter.github.io/">
     <link rel="icon" type="image/x-icon" href="./logo/temp_logo.png">
     <link rel="shortcut icon" href="./logo/temp_logo.png">
@@ -73,7 +51,7 @@
 
         <div class="navigation">
             <button class="nav-button">בית</button>
-            <button class="nav-button">מחשבון</button>
+            <button class="nav-button"><a href="https://new-project-staam.vercel.app/">מחשבון</a></button>
             <button class="nav-button">אודות</button>
             <button class="nav-button">צור קשר</button>
         </div>
@@ -81,7 +59,8 @@
 
     <!-- כותרת ראשית -->
     <div class="main-title">
-        <h1>עזר לסופר - מד זווית</h1>
+        <h1>עזר לסופר - מד זווית </h1>
+        <h2>האתר עדיין בשלבי בנייה</h2>
         <p>בעזרת מד הזווית תכלו למדוד את זווית הקולמוס שלכם, וכן את זווית שולחן הכתיבה באמצעות הטלפון \ המחשב שלכם.
             <br>
             אם אתם משתמשים בטלפון נייד, לחצו על תיבת "מדידה אוטומטית",
@@ -136,12 +115,18 @@
             <label for="accelerometer-checkbox">מדידה אוטומטית</label>
         </div>
         <div id="Background-slots">
-            <input id="Background-slots-checkbox" type="checkbox" >
+            <input id="Background-slots-checkbox" type="checkbox">
             <label for="Background-slots-checkbox">הצג קווי רשת ברקע</label>
-        </div>  
+        </div>
         <div id="angle-input-panel">
-            <label for="angle-input">זווית °</label>
-            <input id="angle-input" type="number" step="1">
+            <div>
+                <label for="angle-input">זווית °</label>
+                <input id="angle-input" type="number" step="1">
+            </div>
+            <div>
+                <button id="angle-input+" class="angle-input-button">+</button>
+                <button id="angle-input-" class="angle-input-button">-</button>
+            </div>
         </div>
     </div>
     <div id="text-heder-box">
@@ -161,9 +146,9 @@
                 מומלץ לבדוק על משטח ישר שמד הזווית מראה 0 מעלות.
                 <br>
                 לאחר מכן ניתן להניח את הטלפון על השולחן בכדי לקבל את זווית השולחן.
-            </p>   
+            </p>
             <h2>מדידה קולמוס ידנית \ מחשב</h2>
-            <p>בכדי למדוד באופן ידני, יש להניח את הקולמוס במרכז הסרגל בצד ימין בצורה ישרה, 
+            <p>בכדי למדוד באופן ידני, יש להניח את הקולמוס במרכז הסרגל בצד ימין בצורה ישרה,
                 <br>
                 כשהחלק הנמוך של הקולמוס נמצא בנקודת האמצע, לאחר מכן יש לסמן במחשב את גובה הזוית של הקולמוס.
                 <br>
@@ -174,10 +159,10 @@
                 <br>
                 יש להעמיד את הקולמוס בצורה ישרה לחלוטין, לאחר מכן להניח את הטלפון לרוחב בזווית הקולמוס.
             </p>
-    </div>
-    <script>
-        init();
-    </script>
+        </div>
+        <script>
+            init();
+        </script>
 
     </div>
 
