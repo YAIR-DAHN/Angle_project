@@ -74,11 +74,25 @@ const AngleInput = ({changeCallback}) => {
     document.getElementById('angle-input-').addEventListener('click', function() {
         document.getElementById('angle-input').stepDown();
     });
-    
-
     element.addEventListener('keyup', onChange);
     element.addEventListener('change', onChange);
 
+    // בחירת תמונה 
+    document.getElementById('bgImageFile').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            const image = document.getElementById('bgImage');
+            image.src = reader.result;
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+
+
+    
     const setValue = (newValue) => {
         value = `${newValue}`;
         element.value = value;

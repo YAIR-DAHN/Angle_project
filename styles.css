@@ -66,6 +66,26 @@ html {
     margin: 1rem ;
 }
 
+
+/* טסט תמונה */
+#bgImage {
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transform: rotate(90deg); */
+    /* transform: translate(-50%, -50%) rotate(90deg); */
+
+}
+@media only screen and (max-width: 600px) {
+    #bgImage {
+        height: 100vw;
+    
+    }
+}
+
+
 /*app*/
 #box {
     position: relative;
@@ -109,7 +129,7 @@ html {
     font-size: large;
     line-height: 2em;
 }
-/* רקע קווי רשת */
+/* רקע קווי רשת כפתור */
 #Background-slots {
     position: absolute;
     top: 10%;
@@ -156,9 +176,10 @@ html {
     shape-rendering: geometricPrecision;
     background-position: center;
     background-repeat: no-repeat;
-    /* דמות בתוך החוגה */
-    background-image: url('images/amsler-grid.png');
-    background-size: contain;
+
+    /* רקע חוגה*/
+    /* background-image: url('images/amsler-grid.png');
+    background-size: contain; */
 }
 
 circle, line, text, path {
