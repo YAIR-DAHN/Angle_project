@@ -47,17 +47,17 @@ const init = (degrees) => {
     angleInput.setValue(initialAngle);
 }
 
-const AccelerometerCheckbox = ({changeCallback}) => {
+const AccelerometerCheckbox = ({ changeCallback }) => {
     const element = document.getElementById('accelerometer-checkbox');
     element.addEventListener('change', () => changeCallback(element.checked));
 
     const setEnabled = (enabled) => element.disabled = !enabled
     const setChecked = (checked) => element.checked = checked;
     const setTooltip = (text) => element.parentElement.title = text;
-    return {setEnabled, setChecked, setTooltip};
+    return { setEnabled, setChecked, setTooltip };
 }
 
-const AngleInput = ({changeCallback}) => {
+const AngleInput = ({ changeCallback }) => {
     const element = document.getElementById('angle-input');
     let value;
     const onChange = () => {
@@ -66,22 +66,58 @@ const AngleInput = ({changeCallback}) => {
             changeCallback(Number(value));
         }
     };
-    // כפתורים להעלות ולהוריד את הזווית
-    document.getElementById('angle-input+').addEventListener('click', function() {
+
+
+    /// כפתורים להעלות ולהוריד את הזווית
+
+    // העלאת הזווית בלחיצה בודדת
+    document.getElementById('angle-input+').addEventListener('click', function () {
         document.getElementById('angle-input').stepUp();
+        const value = element.value;
+        changeCallback(Number(value));
+
     });
-    
-    document.getElementById('angle-input-').addEventListener('click', function() {
+
+    // העלאת הזווית בלחיצה ממושכת
+    document.getElementById('angle-input+').addEventListener('mousedown', function () {
+        intervalId = setInterval(function () {
+            document.getElementById('angle-input').stepUp();
+            const value = document.getElementById('angle-input').value;
+            changeCallback(Number(value));
+        }, 500); // Change this value to adjust the speed
+    });
+    // עצירת ההעלאה בלחיצה ממושכת
+    document.getElementById('angle-input+').addEventListener('mouseup', function () {
+        clearInterval(intervalId);
+    }
+    );
+
+    document.getElementById('angle-input-').addEventListener('click', function () {
         document.getElementById('angle-input').stepDown();
+        const value = element.value;
+        changeCallback(Number(value));
     });
+    // הורדת הזווית בלחיצה ממושכת
+    document.getElementById('angle-input-').addEventListener('mousedown', function () {
+        intervalId = setInterval(function () {
+            document.getElementById('angle-input').stepDown();
+            const value = document.getElementById('angle-input').value;
+            changeCallback(Number(value));
+        }, 500); // Change this value to adjust the speed
+    });
+    // עצירת ההורדה בלחיצה ממושכת
+    document.getElementById('angle-input-').addEventListener('mouseup', function () {
+        clearInterval(intervalId);
+    });
+
     element.addEventListener('keyup', onChange);
     element.addEventListener('change', onChange);
 
     // בחירת תמונה 
-    document.getElementById('bgImageFile').addEventListener('change', function(e) {
+    document.getElementById('bgImageFile').addEventListener('change', function (e) {
         var file = e.target.files[0];
         var reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             const image = document.getElementById('bgImage');
             image.src = reader.result;
         }
@@ -92,7 +128,7 @@ const AngleInput = ({changeCallback}) => {
 
 
 
-    
+
     const setValue = (newValue) => {
         value = `${newValue}`;
         element.value = value;
@@ -100,10 +136,10 @@ const AngleInput = ({changeCallback}) => {
 
     const setReadonly = (readonly) => element.readOnly = readonly;
 
-    return {setValue, setReadonly};
+    return { setValue, setReadonly };
 }
 
-const Indicator = ({changeCallback}) => {
+const Indicator = ({ changeCallback }) => {
     const svg = document.getElementById('svg');
     const pointerLine = svg.getElementById('pointerLine');
     const pointerExtraLine = svg.getElementById('pointerExtraLine');
@@ -149,7 +185,7 @@ const Indicator = ({changeCallback}) => {
     }
 
     svg.addEventListener('wheel', (event) => {
-        const {clientWidth, clientHeight} = svg;
+        const { clientWidth, clientHeight } = svg;
         const eventRadius = Math.sqrt(
             Math.pow(event.offsetX - clientWidth / 2, 2) +
             Math.pow(clientHeight / 2 - event.offsetY, 2)
@@ -161,17 +197,17 @@ const Indicator = ({changeCallback}) => {
             event.preventDefault();
             return false;
         }
-    }, {passive: false});
+    }, { passive: false });
 
-    svg.addEventListener('mousedown', ({offsetX, offsetY}) => {
+    svg.addEventListener('mousedown', ({ offsetX, offsetY }) => {
         setDegrees(Math.atan2(svg.clientHeight / 2 - offsetY, offsetX - svg.clientWidth / 2) * 180 / Math.PI);
         changeCallback(degrees);
     });
 
-    return {setDegrees};
+    return { setDegrees };
 }
 
-const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, errorCallback}) => {
+const AngleAccelerometer = ({ frequency = 4, precision = 1, changeCallback, errorCallback }) => {
     let degrees = 0;
     let error = null;
     let available = false;
@@ -179,17 +215,17 @@ const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, error
     const normalizeGravity = (x, y) => {
         switch (screen.orientation.type) {
             case 'portrait-secondary':
-                return {x: -x, y: -y};
+                return { x: -x, y: -y };
             case 'landscape-primary':
-                return {x: -y, y: x};
+                return { x: -y, y: x };
             case 'landscape-secondary':
-                return {x: y, y: -x};
+                return { x: y, y: -x };
             default:
-                return {x, y};
+                return { x, y };
         }
     };
 
-    const handleValue = ({x, y}) => {
+    const handleValue = ({ x, y }) => {
         available = true;
         error = null;
         const normalized = normalizeGravity(x, y);
@@ -200,7 +236,7 @@ const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, error
         }
     };
 
-    const handleError = ({name}) => {
+    const handleError = ({ name }) => {
         available = false;
         switch (name) {
             case 'NotAllowedError':
@@ -221,8 +257,8 @@ const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, error
     const createAccelerometer = () => {
         if ('Accelerometer' in window) {
             try {
-                const accelerometer = new Accelerometer({frequency});
-                accelerometer.onerror = ({error}) => handleError(error);
+                const accelerometer = new Accelerometer({ frequency });
+                accelerometer.onerror = ({ error }) => handleError(error);
                 accelerometer.onreading = () => handleValue(accelerometer);
                 accelerometer.start();
                 return accelerometer;
@@ -230,7 +266,7 @@ const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, error
                 handleError(error);
             }
         } else {
-            handleError({name: 'NotSupported'});
+            handleError({ name: 'NotSupported' });
         }
         return null;
     };
@@ -242,5 +278,5 @@ const AngleAccelerometer = ({frequency = 4, precision = 1, changeCallback, error
     const isAvailable = () => available;
     const getError = () => error;
 
-    return {start, stop, isAvailable, getError};
+    return { start, stop, isAvailable, getError };
 }
